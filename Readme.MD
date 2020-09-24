@@ -1,4 +1,4 @@
-# LVLD Exercise
+# Exercise
 
 This exercise utilizes typescript, redux-sagas andd styled components and is aimed to provide a good understanding of a real-world like screen implementation approach.
 
