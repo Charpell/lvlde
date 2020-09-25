@@ -5,8 +5,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import Main from './Main';
+import Post from './screens/Post'
+import PostDetail from './screens/PostDetail'
 import theme from './theme';
 import reducers from './reducers';
 import sagas from './sagas';
@@ -16,18 +19,19 @@ const Stack = createStackNavigator();
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducers,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(ReduxThunk)
 );
 
-sagaMiddleware.run(sagas);
 
 export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="OFE" component={Main} />
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home" component={Main} />
+            <Stack.Screen name="Post" component={Post} />
+            <Stack.Screen name="PostDetail" component={PostDetail} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>

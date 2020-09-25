@@ -10,6 +10,7 @@ const createAction = (type: string): Action => {
 };
 
 const defaultRoutine = (type: string): Routine => {
+
   return {
     trigger: createAction(`${type.toUpperCase()}_TRIGGER`),
     success: createAction(`${type.toUpperCase()}_SUCCESS`),
@@ -20,5 +21,11 @@ const defaultRoutine = (type: string): Routine => {
 export default {
   users: {
     fetchUsers: defaultRoutine('fetch_users')
+  },
+  posts: {
+    fetchPosts: defaultRoutine('fetch_posts')
+  },
+  comments: {
+    fetchComments: defaultRoutine('fectch_comments')
   }
 };
