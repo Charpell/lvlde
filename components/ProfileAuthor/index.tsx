@@ -31,9 +31,9 @@ export default function ProfileAuthor(props) {
   
   const TouchableOpacity = styled.TouchableOpacity`
     flex-direction: row;
-    padding-bottom: 10;
-    padding-top: 20;
-    padding-left: 20;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
   `
 
   const Cover = styled.View`
@@ -43,10 +43,10 @@ export default function ProfileAuthor(props) {
   `
 
   const ImageItem = styled.Image`
-    width: 40;
-    height: 40;
-    border-radius: 20;
-    margin-right: 5
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 5px;
   `
 
   const View = styled.View`

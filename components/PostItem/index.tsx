@@ -45,13 +45,13 @@ const TouchableOpacity = styled.TouchableOpacity`
 `
 
 const Cover = styled.View`
-  margin-top: 20;
-  margin-bottom: 20;
-  padding-top: 10;
-  padding-bottom: 10;
-  border-bottom-width: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom-width: 1px;
   border-bottom-color: #c7c7cc;
-  margin-left: 12;
+  margin-left: 12px;
 `
 
 const Text = styled.Text``

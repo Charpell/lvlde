@@ -120,12 +120,12 @@ const Container = styled.SafeAreaView`
 `
 
 const Author = styled.View`
-  padding-left: 20;
-  padding-right: 20;
+  padding-left: 20px;
+  padding-right: 20px;
 `
 
 const Comments = styled.View`
-  margin-top: 20;
+  margin-top: 20px;
 `
 
 const Text = styled.Text``
