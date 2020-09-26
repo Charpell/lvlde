@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {RefreshControl, FlatList,SafeAreaView,StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {RefreshControl, FlatList,SafeAreaView} from 'react-native';
 import PostItem from '../../components/PostItem'
 import ProfileAuthor from '../../components/ProfileAuthor'
 import { connect } from 'react-redux';
@@ -18,6 +18,7 @@ import Loading from '../../components/Loading'
     navigation: () => void;
     route: () => void;
   }
+  import useHook from '../../useHook';
   
   
 
@@ -25,31 +26,14 @@ import Loading from '../../components/Loading'
     const { params: { item: user } }: any = route
 
   const [refreshing] = useState(false);
-  console.log(posts)
-  useEffect(() => {
-    const makeRequest = async() => {
-      fetchPostsTrigger()
-      try {
-        let response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
-        if (response.ok) {
-          fetchPostsSuccess(await response.json())
-        } else {
-          throw new Error('An error occured')
-        }
-      } catch (error) {
-        fetchPostsError(error)
-      }
-    }
-    makeRequest()
-  }, []);
+  useHook(fetchPostsTrigger,fetchPostsSuccess,fetchPostsError,`posts?userId=${user.id}`)
+
+  if (!posts.length) return <Loading />
 
 
   return (
     <SafeAreaView style={{ flex: 1 }} forceInset={{top: 'always'}}>
-       {
-         !posts.length ? <Loading /> : (
-           <>
-           <Header
+       <Header
             title={"Post"}
                 renderLeft={() => {
                 return (
@@ -90,9 +74,6 @@ import Loading from '../../components/Loading'
               </PostItem>
             )}
           />
-           </>
-         )
-       }
     </SafeAreaView>
   );
 })

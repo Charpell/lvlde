@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 
 import Header from '../../components/Header'
@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import Actions from '../../actions';
 import Selectors from '../../selectors';
 import { State, Comment } from '../../types';
+import useHook from '../../useHook';
 
 interface PostDetailProps {
   comments: Comment[];
@@ -23,22 +24,7 @@ interface PostDetailProps {
 export const CommentComp = React.memo(({ comments, fetchCommentsTrigger, fetchCommentsSuccess, fetchCommentsError ,navigation, route}: PostDetailProps): React.ReactElement => {
   const { params: { item: post, user } }: any = route
 
-  useEffect(() => {
-    const makeRequest = async() => {
-      fetchCommentsTrigger()
-      try {
-        let response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
-        if (response.ok) {
-          fetchCommentsSuccess(await response.json())
-        } else {
-          throw new Error('An error occured')
-        }
-      } catch (error) {
-        fetchCommentsError(error)
-      }
-    }
-    makeRequest()
-  }, []);
+  useHook(fetchCommentsTrigger,fetchCommentsSuccess,fetchCommentsError,`comments?postId=${post.id}`)
 
   
 
