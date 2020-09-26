@@ -7,7 +7,6 @@ const initialState: UserState = {
 };
 
 const users = (state: UserState = initialState, action: Action) => {
-  console.log({ action })
   switch (action.type) {
     case Actions.users.fetchUsers.success.toString():
       return {

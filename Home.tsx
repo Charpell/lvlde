@@ -75,7 +75,7 @@ export const Home = React.memo(({ users, fetchUsersTrigger, fetchUsersSuccess, f
                           {users.map((item, index) => {
                             const last = index === users.length - 1
                             return (
-                              <TopBar onPress={() => navigation.navigate("Post", { item: item })}>
+                              <TopBar onPress={() => navigation.navigate("Post", { item: item })} key={index}>
   
                                 <Column>
                                   <H1>{item.name}</H1>

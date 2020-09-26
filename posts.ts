@@ -7,7 +7,6 @@ const initialState: PostState = {
 };
 
 const posts = (state: PostState = initialState, action: Action) => {
-  console.log({ action })
   switch (action.type) {
     case Actions.posts.fetchPosts.success.toString():
       return {

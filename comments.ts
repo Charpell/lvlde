@@ -7,7 +7,6 @@ const initialState: CommentState = {
 };
 
 const comments = (state: CommentState = initialState, action: Action) => {
-  console.log('actions', action)
   switch (action.type) {
     case Actions.comments.fetchComments.success.toString():
       return {
